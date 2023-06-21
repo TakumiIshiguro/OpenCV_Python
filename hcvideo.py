@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 
 # カメラのキャプチャを開始
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(4)
 
 while True:
     # フレームを1つずつ読み込む
@@ -25,10 +25,12 @@ while True:
     if circles is not None:
         circles = np.uint16(np.around(circles))
         
-        # 検出した円を画像に描き、ファイルを書き出す
+        # 検出した円を画像に描き、ファイルを書き出す 
         for i in circles[0,:]:
             cv2.circle(frame, (i[0], i[1]), i[2], (0, 255, 0), 2)
             cv2.circle(frame, (i[0], i[1]), 2, (0, 0, 255), 3)
+            print('x:',i[0],)
+            print('y:',i[1],)
 
     # グレースケール画像を表示する
     cv2.imshow('hcvideo', frame)
